@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct NewsPanelApp: App {
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

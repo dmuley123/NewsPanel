@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F4C8D6E22E1FF09B00EF0730 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4C8D6E12E1FF09B00EF0730 /* CoreData.framework */; };
+		F4C8D6E52E1FF0FD00EF0730 /* NewsPanel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4C8D6E32E1FF0FD00EF0730 /* NewsPanel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F4C8D6C42E1FEF2D00EF0730 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		F4C8D6B62E1FEF2B00EF0730 /* NewsPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C8D6C32E1FEF2D00EF0730 /* NewsPanelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsPanelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C8D6CD2E1FEF2D00EF0730 /* NewsPanelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsPanelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C8D6E12E1FF09B00EF0730 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F4C8D6E42E1FF0FD00EF0730 /* NewsPanel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsPanel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C8D6E22E1FF09B00EF0730 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +83,11 @@
 		F4C8D6AD2E1FEF2B00EF0730 = {
 			isa = PBXGroup;
 			children = (
+				F4C8D6E32E1FF0FD00EF0730 /* NewsPanel.xcdatamodeld */,
 				F4C8D6B82E1FEF2B00EF0730 /* NewsPanel */,
 				F4C8D6C62E1FEF2D00EF0730 /* NewsPanelTests */,
 				F4C8D6D02E1FEF2D00EF0730 /* NewsPanelUITests */,
+				F4C8D6E02E1FF09A00EF0730 /* Frameworks */,
 				F4C8D6B72E1FEF2B00EF0730 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +100,14 @@
 				F4C8D6CD2E1FEF2D00EF0730 /* NewsPanelUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F4C8D6E02E1FF09A00EF0730 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4C8D6E12E1FF09B00EF0730 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C8D6E52E1FF0FD00EF0730 /* NewsPanel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +577,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4C8D6E32E1FF0FD00EF0730 /* NewsPanel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4C8D6E42E1FF0FD00EF0730 /* NewsPanel.xcdatamodel */,
+			);
+			currentVersion = F4C8D6E42E1FF0FD00EF0730 /* NewsPanel.xcdatamodel */;
+			path = NewsPanel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F4C8D6AE2E1FEF2B00EF0730 /* Project object */;
 }
