@@ -10,9 +10,9 @@ import Foundation
 struct MockData {
     static func getMockMetadata() -> [ArticleSummary] {
         return [
-            ArticleSummary(id: "1", author: "Robert", summary: "iOS 18 introduces SwiftUI improvements"),
-            ArticleSummary(id: "2", author: "Alice", summary: "AI integration in aviation industry"),
-            ArticleSummary(id: "3", author: "Robert", summary: "Offline-first mobile app design tips")
+            ArticleSummary(id: "1", author: "Robert", summary: "SwiftUI 3.0 tips", approveCount: 5),
+            ArticleSummary(id: "2", author: "Alice", summary: "AI in Aviation", approveCount: 3),
+            ArticleSummary(id: "3", author: "Robert", summary: "Offline-first apps", approveCount: 7)
         ]
     }
 }
@@ -21,6 +21,7 @@ struct ArticleSummary {
     let id: String
     let author: String
     let summary: String
+    let approveCount: Int
 }
 
 // MARK: - Full Articles
@@ -40,4 +41,46 @@ extension MockData {
 struct ArticleDetailData {
     let id: String
     let fullContent: String
+}
+
+struct ArticleMetaDataJSON: Codable {
+    let articleId: String
+    let author: String
+    let approveCount: Int
+    let summary: String
+}
+
+extension MockData {
+    static func getMockArticleMetadataJSON() -> Data {
+        let mockArray: [ArticleMetaDataJSON] = [
+            .init(articleId: "1", author: "Robert", approveCount: 5, summary: "SwiftUI 3.0 tips"),
+            .init(articleId: "2", author: "Alice", approveCount: 3, summary: "AI in Aviation"),
+            .init(articleId: "3", author: "Robert", approveCount: 7, summary: "Offline-first apps")
+        ]
+
+        return try! JSONEncoder().encode(mockArray)
+    }
+}
+
+struct ArticleDetailJSON: Codable {
+    let articleId: String
+    let name: String
+    let article: String
+    let createdAt: String
+    let updatedAt: String
+    let approvedBy: [String]
+}
+
+extension MockData {
+    static func getMockArticleDetailJSON(for id: String) -> Data? {
+        let detail = ArticleDetailJSON(
+            articleId: id,
+            name: "Perfume",
+            article: "Perfumes are made from essential oils and aroma compounds",
+            createdAt: "2024-12-01T10:30:00Z",
+            updatedAt: "2025-06-25T09:15:00Z",
+            approvedBy: ["Mark", "Jhon"]
+        )
+        return try? JSONEncoder().encode(detail)
+    }
 }

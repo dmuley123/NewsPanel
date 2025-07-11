@@ -56,9 +56,9 @@ struct LoginView: View {
     func handleSync() async {
         do {
             try await NewsService.shared.syncArticles(context: viewContext)
-            alertMessage = "Sync successful!"
+            alertMessage = "Metadata sync complete"
         } catch {
-            alertMessage = "Failed to sync articles: \(error.localizedDescription)"
+            alertMessage = "Failed to sync: \(error.localizedDescription)"
         }
         showAlert = true
     }

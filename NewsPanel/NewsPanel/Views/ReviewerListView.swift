@@ -13,20 +13,31 @@ struct ReviewerListView: View {
 
     var body: some View {
         List {
-            ForEach(viewModel.groupedArticles.keys.sorted(), id: \.self) { author in
+            ForEach(viewModel.groupedReviewerArticles.keys.sorted(), id: \.self) { author in
                 Section(header: Text(author)) {
-                    ForEach(viewModel.groupedArticles[author] ?? [], id: \.objectID) { article in
-                        HStack {
-                            Button(action: {
-                                viewModel.toggleSelection(for: article.objectID)
-                            }) {
-                                Image(systemName: viewModel.selectedArticles.contains(article.objectID) ? "checkmark.square" : "square")
-                            }
-                            .buttonStyle(.plain)
-
-                            VStack(alignment: .leading) {
-                                Text(article.summary ?? "")
+                    ForEach(viewModel.groupedReviewerArticles[author] ?? [], id: \.id) { article in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Button(action: {
+                                    viewModel.toggleSelection(for: article.objectID)
+                                }) {
+                                    Image(systemName: viewModel.selectedArticles.contains(article.objectID) ? "checkmark.square" : "square")
+                                }
+                                .buttonStyle(.plain)
+                                
+                                Text(article.summary)
+                                    .font(.headline)
                                     .lineLimit(2)
+                            }
+                            
+                            Text("Details: \(article.fullContent)")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .lineLimit(4)
+                        }
+                        .onAppear {
+                            if viewModel.isLast(articleID: article.id) {
+                                viewModel.loadNextPage()
                             }
                         }
                     }

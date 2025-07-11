@@ -12,14 +12,22 @@ struct AuthorListView: View {
     @ObservedObject var viewModel: NewsListViewModel
 
     var body: some View {
-        List(viewModel.authorArticles, id: \.objectID) { article in
-            VStack(alignment: .leading) {
-                Text(article.summary ?? "")
+        List(viewModel.authorArticles, id: \.id) { article in
+            VStack(alignment: .leading, spacing: 6) {
+                Text(article.summary)
+                    .font(.headline)
                     .lineLimit(2)
-                Text("Approved by: \( (article.approvedBy as? [String])?.count ?? 0 ) users")
+
+                Text("Content: \(article.fullContent)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .lineLimit(4)
+
+                Text("Approved by: \(article.approveCount) users")
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
+            .padding(.vertical, 4)
         }
     }
 }

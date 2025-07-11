@@ -11,10 +11,6 @@ import CoreData
 extension ArticleMetadata {
     static func fetchCount(context: NSManagedObjectContext) -> Int {
         let request: NSFetchRequest<ArticleMetadata> = ArticleMetadata.fetchRequest()
-        do {
-            return try context.count(for: request)
-        } catch {
-            return 0
-        }
+        return (try? context.count(for: request)) ?? 0
     }
 }
