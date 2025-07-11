@@ -22,3 +22,22 @@ struct ArticleSummary {
     let author: String
     let summary: String
 }
+
+// MARK: - Full Articles
+
+extension MockData {
+    static func getMockDetail(for id: String) -> ArticleDetailData? {
+        let data: [String: String] = [
+            "1": "iOS 18 introduces a set of improvements to SwiftUI including animations and layout.",
+            "2": "AI is now reshaping the aviation sector through predictive maintenance.",
+            "3": "Offline-first apps require syncing strategies and caching techniques."
+        ]
+        guard let content = data[id] else { return nil }
+        return ArticleDetailData(id: id, fullContent: content)
+    }
+}
+
+struct ArticleDetailData {
+    let id: String
+    let fullContent: String
+}
