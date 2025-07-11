@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var username: String = ""
-    @State private var showAlert = false
-    @State private var alertMessage = ""
     @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var username: String = ""
+    @State private var alertMessage = ""
+    
+    @State private var showAlert = false
+    @State private var isLoggedIn = false
+    
 
     var body: some View {
         VStack(spacing: 20) {
@@ -44,6 +48,9 @@ struct LoginView: View {
             Text(alertMessage)
         }
         .padding()
+        .navigationDestination(isPresented: $isLoggedIn) {
+            NewsListView()
+        }
     }
 
     func handleSync() async {
@@ -61,8 +68,7 @@ struct LoginView: View {
         UserDefaults.standard.saveUserSession(session)
 
         if isSynced() {
-            // Navigate to News List Screen (to be added later)
-            print("Login Success → \(session.role.rawValue.capitalized)")
+            isLoggedIn = true
         } else {
             alertMessage = "Please sync the app before logging in."
             showAlert = true

@@ -29,7 +29,7 @@ class NewsService {
                 newArticle.id = article.id
                 newArticle.author = article.author
                 newArticle.summary = article.summary
-                // newArticle.approvedBy = []
+                newArticle.approvedBy = [] as NSObject
                 
             }
         }
