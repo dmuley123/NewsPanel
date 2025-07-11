@@ -42,7 +42,7 @@ This is a SwiftUI-based iOS application developed as part of the AirFi technical
 ## 🧪 How to Run
 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/airfi-assessment.git
+git clone https://github.com/dmuley123/NewsPanel.git
 ```
 2. Open `NewsPanel.xcodeproj` in Xcode (v13+)
 3. Build and run the app
